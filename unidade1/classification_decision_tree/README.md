@@ -25,3 +25,22 @@ Nesta questão você vai realizar uma predição com arvore de decisão e gerar 
 8) Print a acurácia do modelo.
 
 
+### Questão 2
+
+[2_compare_classifcation.py](2_compare_classifcation.py)
+
+#### Comparação de classificações
+
+Nesta questão você vai realizar uma comparação no processo de calssificação
+
+#### Instruções:
+
+1)  Implente a etapa de predição dentro da função  ``process_classifier``. print a acurácia nesta função
+   
+2)  Instancie a regressão logística e arvore de decisão. 
+
+3) divida o dataset em conjunto para treino e teste com a função train_test_split
+
+4) chame a função de predição  process_classifier para cada objeto
+
+
