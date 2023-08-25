@@ -7,7 +7,7 @@ from sklearn.metrics import accuracy_score
 
 df_breast = load_breast_cancer_dataset()
 X = df_breast[["radius_mean","texture_mean","perimeter_mean","area_mean"]].values
-y  = df_breast[['diagnosis']].values
+y = df_breast[['diagnosis']].values
 
 # Instantiate a DecisionTreeClassifier 'dt' with a maximum depth of 6
 dt = DecisionTreeClassifier(max_depth=6 , random_state=3)
