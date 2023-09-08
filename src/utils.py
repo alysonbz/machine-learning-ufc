@@ -24,3 +24,6 @@ def plot_labeled_decision_regions(X_test, y_test, clfs):
         plt.show()
 
 
+def load_auto_dataset():
+    df = pd.read_csv('../dataset/auto.csv')
+    return df

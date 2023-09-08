@@ -44,3 +44,74 @@ Nesta questão você vai realizar uma comparação no processo de calssificaçã
 4) chame a função de predição  process_classifier para cada objeto
 
 
+### Questão 3
+
+[3_decision_tree_entropy.py](3_decision_tree_entropy.py)
+
+#### utilização da entropia
+
+Nesta questão você vai realizar uma análise da entropia
+
+#### Instruções:
+
+1)  Implente a etapa de predição dentro da função  ``process_classifier``. print a acurácia nesta função
+   
+2)  Instancie a regressão logística e arvore de decisão. 
+
+3) divida o dataset em conjunto para treino e teste com a função train_test_split
+
+4) chame a função de predição  process_classifier para cada objeto
+
+### Questão 4
+
+[4_manual_entropy.py](4_manual_entropy.py)
+
+#### utilização da entropia manual
+
+Nesta questão você vai realizar uma análise da entropia manual
+
+#### Instruções:
+
+1)  Implemente a etapa de predição dentro da função  cada tabela de calculo da entropia para arvore de decisão.
+
+
+### Questão 5
+
+[5_regression_decision_tree.py](5_regression_decision_tree.py)
+
+#### utilização da arvore de decisão para regressão
+
+Nesta questão você vai realizar uma regressão com árvore de decisão
+
+#### Instruções:
+
+1)  importe DecisionTreeRegressor
+2) instancie o regressor
+3) Aplique a função fit no conjunto de treino
+4) Aplique a função predict no conjunto de teste
+5) calcule o erro quadrático médio
+6) Cacule a raíz quadrada do erro quadrático médio
+
+### Questão 6
+
+
+[6_linear _regression_vs_decision_tree.py](6_linear%20_regression_vs_decision_tree.py)
+
+#### comparação da regressao linear com a arvore de decisão para regressão
+
+Nesta questão você vai realizar uma regressão com árvore de decisão e regressão linear apra comparação
+
+#### Instruções:
+
+1)  importe DecisionTreeRegressor
+2) instancie o regressor
+3) Aplique a função fit no conjunto de treino
+4) Aplique a função predict no conjunto de teste
+5) calcule o erro quadrático médio
+6) Cacule a raíz quadrada do erro quadrático médio
+
+
+
+
+   
+
