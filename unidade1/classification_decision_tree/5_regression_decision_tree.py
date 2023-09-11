@@ -7,6 +7,7 @@ from sklearn.tree import DecisionTreeRegressor
 # Import mean_squared_error from sklearn.metrics as MSE
 from sklearn.metrics import mean_squared_error as MSE
 
+
 df = load_auto_dataset()
 X = df.drop(['mpg', 'origin'], axis=1)
 y = df['mpg'].values
