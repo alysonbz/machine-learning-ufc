@@ -20,7 +20,7 @@ def compute_regressor_rmse(reg,X_train, X_test,y_train,y_test):
     mse = MSE(y_pred, y_test)
 
     # Compute rmse_dt
-    rmse = mse**(1/2)
+    rmse = mse**(0.5)
 
     return rmse
 
