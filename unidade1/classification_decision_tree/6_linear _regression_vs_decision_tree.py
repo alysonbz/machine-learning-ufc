@@ -8,7 +8,6 @@ from sklearn.linear_model import LinearRegression
 # Import mean_squared_error from sklearn.metrics as MSE
 from sklearn.metrics import mean_squared_error as MSE
 
-
 def compute_regressor_rmse(reg,X_train, X_test,y_train,y_test):
 
     # Fit dt to the training set
@@ -32,10 +31,10 @@ y = df['mpg'].values
 # Instantiate dt and lr
 dt = DecisionTreeRegressor(max_depth=8,
                            min_samples_leaf=0.13,
-                           random_state=3)
+                           random_state=4)
 lr = LinearRegression()
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=3)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=4)
 
 # call compute_regressor_rmse function for the two regressors
 rmse_dt = compute_regressor_rmse(dt,X_train, X_test,y_train,y_test)
