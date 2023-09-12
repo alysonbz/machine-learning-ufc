@@ -7,7 +7,6 @@ from sklearn.tree import DecisionTreeRegressor
 # Import mean_squared_error from sklearn.metrics as MSE
 from sklearn.metrics import mean_squared_error as MSE
 
-
 df = load_auto_dataset()
 X = df.drop(['mpg', 'origin'], axis=1)
 y = df['mpg'].values
@@ -16,11 +15,11 @@ y = df['mpg'].values
 # Instantiate dt
 dt = DecisionTreeRegressor(max_depth=8,
                            min_samples_leaf=0.13,
-                           random_state=3)
+                           random_state=4)
 
 X_train, X_test, y_train, y_test = train_test_split(X, y,
-                                                    test_size=0.2,
-                                                    random_state=3)
+                                                    test_size=0.3,
+                                                    random_state=4)
 
 # Fit dt to the training set
 dt.fit(X_train, y_train)
