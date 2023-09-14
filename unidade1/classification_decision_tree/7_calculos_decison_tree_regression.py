@@ -10,3 +10,7 @@ def questao2():
     return None
 def questao3():
     return None
+
+print("Questao1: ",questao1())
+print("Questao2: ",questao2())
+print("Questao3: ",questao3())
