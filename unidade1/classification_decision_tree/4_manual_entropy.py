@@ -4,16 +4,23 @@ import numpy as np
 
 
 
+# Incializando os dados
+import pandas as pd
+import numpy as np
+import math
+
+# Seu dataframe
+
 
 dt = {'exam_result':["Pass","Fail","Fail","Pass","Fail","Fail","Pass","Pass","Pass","Pass","Pass","Fail","Fail","Fail"],
         'online_courses' : ["Y","N","Y","Y","N","Y","Y","N","N","Y","N","Y","N","N"],
         "student_background" : ["Maths","Maths","Maths","CS","Other","Other","Maths","Maths","CS","CS","Maths","Other","Other","Other"],
         "working_status" : ["NW","W","W","NW","W","W","NW","W","W","W","NW","W","NW","W"]}
 
-data = pd.DataFrame(dt)
+data = pd.DataFrame(dt) # Transformando no formato DataFrame
 
 
-def calculate_entropy_for_predictors(data, idependente, atributos):
+def calculo_entropia(data, idependente, atributos):
     df = pd.DataFrame(data)
 
     # Função para calcular a entropia
@@ -119,6 +126,8 @@ not_working = entropy(5/6, 1/6)
 ### Teste
 atributos = ['online_courses', 'student_background', 'working_status']
 idependente = 'exam_result'
-print(calculate_entropy_for_predictors(data,idependente,atributos))
+print(calculo_entropia(data,idependente,atributos))
 
 
+
+# Calcular indice de gini extra
