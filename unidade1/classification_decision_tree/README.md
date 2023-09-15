@@ -110,6 +110,19 @@ Nesta questão você vai realizar uma regressão com árvore de decisão e regre
 5) calcule o erro quadrático médio
 6) Cacule a raíz quadrada do erro quadrático médio
 
+### Questão 7
+
+[7_calculos_decison_tree_regression.py](7_calculos_decison_tree_regression.py)
+
+####  arvore de decisão para regressão
+
+Nesta questão você vai realizar os calculos para regressão com árvore de decisão 
+
+#### Instruções:
+
+1) Na função ``questão1`` realize os cáculos de count, average, Standard Deviation e Coeff. of Variation da coluna price do dataset. Retorne os valores.
+2) na função ``questao2`` realize os cáulos de S(T,X) para todas as colunas do dataset, com exceção da coluna target. Armazene as respostas em um dataframe e retorne.
+3) na função ``questão3`` realize o calculo de SDR(T,X) para todas as colunas do dataset, exceção da coluna target. Amazene a resposta em um dataframe e retorne o id do atributo que possui o maior SDR.
 
 
 
