@@ -30,3 +30,11 @@ def load_auto_dataset():
 
 def load_house_price_dataset():
      return pd.read_csv('../dataset/Housing.csv')
+
+
+def indian_liver_dataset():
+    df = pd.read_csv('../dataset/Indian Liver Patient Dataset (ILPD).csv')
+    df = df.dropna(axis=0)
+    le = LabelEncoder()
+    df["gender"] = le.fit_transform(df["gender"])
+    return df
