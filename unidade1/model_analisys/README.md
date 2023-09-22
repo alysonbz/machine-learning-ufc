@@ -67,6 +67,7 @@ Nesta questão você vai realizar uma predição com arvore de decisão usando b
 8) Calcule a acurácia no banco de teste
 
 
+
 ### Atividade para análise de modelos
 
 [Atividade_analise_modelos.py](Atividade_analise_modelos.py)
@@ -80,3 +81,16 @@ Nesta questão você vai realizar uma predição com arvore de decisão usando b
 1)  Implemente uma função que calcula bias e variancia de um modelo de classificação com arvore de decisão. Escolha algum dataset disponivel neste repositório para calcular.
    
 2)  Plot o comportamento gráfico trade-off de bias e variância para um modelo de classsificação por arvore de decisão. Prponha as duas listas bias e variance e estime valores em que quando aplicado na equação do erro gere o gráfico trade-off.
+
+
+### Atividade para implemtação manual
+
+[manual_bagging.py](manual_bagging.py)
+
+[manual_voting_classifier.py](manual_voting_classifier.py)
+
+#### Instruções:
+
+1)  Faça uma implemtação manual do algoritmo bagging. Conforme indicação no código.
+   
+2)  Faça uma implementação manual do voting_classifier. Considere hard voting como como o caso default de escolha.
