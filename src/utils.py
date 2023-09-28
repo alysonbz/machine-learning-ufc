@@ -38,3 +38,8 @@ def indian_liver_dataset():
     le = LabelEncoder()
     df["gender"] = le.fit_transform(df["gender"])
     return df
+
+def bike_rental_dataset():
+    df = pd.read_csv('../dataset/bikes.csv')
+    df = df.drop(['datetime'],axis = 1)
+    return df
