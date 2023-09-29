@@ -28,7 +28,7 @@ def entropy(var):  # recebe uma variavel
 ## ---> Calculo da Entropia Média
 def average_entropy(children):  # recebe uma lista com os nós filhos
     total = sum(len(node) for node in children)  # numero total de elementos
-    return sum([(len(node) / total) * entropy(node) for node in children])  # media = soma da frequencia x entropia de cada nó
+    return sum([(len(node) / total) * entropy(node) for node in children])  # media da entropia = somatorio da frequencia x entropia de cada nó
 
 
 ## ---> Cálculo do ganho de informação

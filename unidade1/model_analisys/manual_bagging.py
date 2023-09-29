@@ -8,6 +8,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score
 
 
+
 class Bagging:
 
     def __init__(self,base_estimator, n_estimators):

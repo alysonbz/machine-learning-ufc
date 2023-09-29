@@ -38,14 +38,14 @@ var_pred = np.var(y_pred)
 print('Variância Test:', var_test,
       '\nVariância Pred:',  var_pred)
 
-
 # gerar nums aleatorios - 0.1 a 1 , 0.2 a 2
-bias = np.array([random.uniform(0.1, 1.0) for _ in range(10)])
-var = np.array([random.uniform(0.2, 2.0) for _ in range(10)])
+bias = np.array([random.uniform(0.1, 1.0) for _ in range(100)])
+var = np.array([random.uniform(0.2, 2.0) for _ in range(100)])
 
 erro = bias**2 + var
 
-plt.scatter(erro, var)
+#plt.scatter(erro, var)
 plt.scatter(erro, bias)
+plt.legend('var')
 plt.show()
 

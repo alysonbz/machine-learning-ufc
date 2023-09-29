@@ -4,7 +4,7 @@ from sklearn.metrics import accuracy_score
 
 x_train, x_test, y_train, y_test = train_test_split(X, y,
                                                     test_size = 0.2,
-                                                    stractfy = )
+                                                    stractfy = y)
 
 df.fit(x_train, y_train)
 

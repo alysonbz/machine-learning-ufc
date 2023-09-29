@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 import matplotlib.pyplot as plt
-import mlxtend.plotting
+#import mlxtend.plotting
 import numpy as np
 
 def load_breast_cancer_dataset():
