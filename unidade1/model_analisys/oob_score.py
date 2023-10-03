@@ -6,7 +6,7 @@ from src.utils import indian_liver_dataset
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score
-
+##CAI NA PROVA
 # Set seed for reproducibility
 SEED=1
 df = indian_liver_dataset()

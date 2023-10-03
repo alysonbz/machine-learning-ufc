@@ -1,69 +1,66 @@
 import warnings
 warnings.filterwarnings("ignore")
+
 # Import functions to compute accuracy and split data
-from __ import ___
-from __ import __
+from sklearn.metrics import accuracy_score
+from sklearn.model_selection import train_test_split
 
 # Import models, including VotingClassifier meta-model
-from ___ import ____
-from ____ import ___
-from ____ import ____
-from ____ import ___
+from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier as KNN
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import VotingClassifier
 
 from src.utils import indian_liver_dataset
 from sklearn.preprocessing import StandardScaler
 
-
 df = indian_liver_dataset()
-X = df.drop(['is_patient','gender'],axis=1)
+X = df.drop(['is_patient', 'gender'], axis=1)
 scaler = StandardScaler()
 X = scaler.fit_transform(X)
 y = df['is_patient'].values
 
 # Set seed for reproducibility
-SEED=1
+SEED = 1
 
-#spit the dataset
-X_train, X_test, y_train, y_test = ____
+# Split the dataset
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=SEED)
 
-
-# Instantiate lr - logisic regression
-lr = ___
+# Instantiate lr - logistic regression
+lr = LogisticRegression(random_state=SEED)
 
 # Instantiate knn with 27 neighbors
-knn = ---
+knn = KNN(n_neighbors=27)
 
 # Instantiate dt - decision tree with min_sample_leaf 0.13 and random state SEED
-dt = ___
+dt = DecisionTreeClassifier(min_samples_leaf=0.13, random_state=SEED)
 
 # Define the list classifiers
-classifiers = [('Logistic Regression', lr), ___, ___]
+classifiers = [('Logistic Regression', lr), ('K Nearest Neighbours', knn), ('Decision Tree', dt)]
 
 # Iterate over the pre-defined list of classifiers
-for clf_name, clf in ___:
+for clf_name, clf in classifiers:
     # Fit clf to the training set
-    ___
+    clf.fit(X_train, y_train)
 
     # Predict y_pred
-    y_pred = ___
+    y_pred = clf.predict(X_test)
 
     # Calculate accuracy
-    accuracy =___
+    accuracy = accuracy_score(y_test, y_pred)
 
     # Evaluate clf's accuracy on the test set
     print('{:s} : {:.3f}'.format(clf_name, accuracy))
 
-
-
 # Instantiate a VotingClassifier vc
-vc = ____
+vc = VotingClassifier(estimators=classifiers)
 
 # Fit vc to the training set
-____
+vc.fit(X_train, y_train)
 
 # Evaluate the test set predictions
-y_pred = ___
+y_pred = vc.predict(X_test)
 
 # Calculate accuracy score
-accuracy = ____
+accuracy = accuracy_score(y_test, y_pred)
 print('Voting Classifier: {:.3f}'.format(accuracy))
