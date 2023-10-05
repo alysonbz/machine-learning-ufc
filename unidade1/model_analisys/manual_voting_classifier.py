@@ -1,6 +1,4 @@
-# Import DecisionTreeClassifier
-from sklearn.tree import DecisionTreeClassifier
-# Import BaggingClassifier
+# PACKAGES -------------------------------------------------------------------------------------------------------------
 
 from src.utils import indian_liver_dataset
 from sklearn.model_selection import train_test_split
@@ -9,21 +7,33 @@ from sklearn.metrics import accuracy_score
 from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier as KNN
+from scipy.stats import mode
 
+
+# VOTING CLASSIFIER ----------------------------------------------------------------------------------------------------
 
 class Voting_classifier:
 
     def __init__(self, base_estimator):
         self.base_estimator = base_estimator
-
+        self.classifiers = []
 
     def fit(self, X_train, y_train):
-        pass
+        for name, classifier in self.base_estimator:
+            classifier.fit(X_train, y_train)
+            self.classifiers.append((name, classifier))
+        return self
 
     def predict(self, X):
-        pass
+        predictions = []
+        for name, classifier in self.classifiers:
+            y_pred = classifier.predict(X)
+            predictions.append(y_pred)
+        y_pred_major, _ = mode(predictions)  # hard voting
+        return y_pred_major
 
 
+# TESTE ----------------------------------------------------------------------------------------------------------------
 
 # Set seed for reproducibility
 SEED = 1
