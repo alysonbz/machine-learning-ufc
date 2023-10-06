@@ -17,22 +17,25 @@ y = df['is_patient'].values
 X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.2,random_state=SEED)
 
 # Instantiate dt
-dt = ___
+dt = DecisionTreeClassifier(max_depth=4,
+                            min_samples_leaf=0.16,
+                            random_state=SEED)
 
 # Instantiate bc
-bc = __
+bc = BaggingClassifier(base_estimator=dt,n_estimators=300,
+                       oob_score= True, n_jobs=1)
 
 # Fit bc to the training set
-___
+bc.fit(X_train,y_train)
 
 # Predict test set labels
-y_pred = ___
+y_pred = bc.predict(X_test)
 
 # Evaluate test set accuracy
-acc_test = ---
+acc_test = accuracy_score(y_test,y_pred)
 
 # Evaluate OOB accuracy
-acc_oob = ----
+acc_oob = bc.oob_score
 
 # Print acc_test and acc_oob
 print('Test set accuracy: {:.3f}, OOB accuracy: {:.3f}'.format(acc_test, acc_oob))

@@ -7,7 +7,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score
 
-
+# divide em 20% e divide no random state
+# começar pelo volting classifier
 class Bagging:
 
     def __init__(self,base_estimator, n_estimators):
