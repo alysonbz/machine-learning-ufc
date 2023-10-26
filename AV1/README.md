@@ -35,7 +35,7 @@ questão 1 -
 
 #### Instruções:
 
-Converta o dataset de imagem para um dataframe e ,utilizando calculo do indice de Gini e entropia determine as duas possibilidades de nó raíz da arvore de 
+Converta o dataset de imagem para um dataframe e ,utilizando calculo do indice de Gini e entropia determine as duas possibilidades de nó raíz da árvore de 
 decisão. A ultima coluna do dataset é a coluna alvo.
 
 ### Questão 2
