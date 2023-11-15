@@ -31,7 +31,3 @@ def questao2(df):
     return pd.Series(results)
 
 # 3) Função para calcular SDR(T,X) para todas as colunas, exceto a coluna alvo
-def questao3(df):
-
-
-print()
