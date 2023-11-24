@@ -9,7 +9,7 @@ y = diabetes_df['diabetes'].values
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42, stratify=y)
 
 # Instantiate an RBF SVM
----
+svm = SVC()
 
 # Instantiate the GridSearchCV object and run the search
 parameters = {'gamma':[0.00001, 0.0001, 0.001, 0.01, 0.1]}
