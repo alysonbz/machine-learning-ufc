@@ -43,3 +43,12 @@ def bike_rental_dataset():
     df = pd.read_csv('../dataset/bikes.csv')
     df = df.drop(['datetime'],axis = 1)
     return df
+
+
+def load_wine_dataset():
+    wine = pd.read_csv('../dataset/wine.csv')
+    return wine
+
+def load_diabetes_clean_dataset():
+    df = pd.read_csv('../dataset/diabetes_clean.csv')
+    return df
