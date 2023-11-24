@@ -13,10 +13,12 @@ svm = SVC()
 
 # Instantiate the GridSearchCV object and run the search
 parameters = {'gamma':[0.00001, 0.0001, 0.001, 0.01, 0.1]}
-searcher = ____
+searcher = GridSearchCV(estimator=svm,
+                        param_grid=parameters)
 
 #fit the searcher
-___
+searcher.fit(X_train,y_train
+             )
 
 # Report the best parameters
 print("Best CV params", searcher.best_params_)
