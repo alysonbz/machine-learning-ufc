@@ -12,7 +12,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_
 svm = ___
 
 # Instantiate the GridSearchCV object and run the search
-parameters = {'C':[0.1, 1, 10], 'gamma':[0.00001, 0.0001, 0.001, 0.01, 0.1], 'kernel':{'linear', 'poly', 'rbf', 'sigmoid', 'precomputed'}}
+parameters = {'C':[0.1, 1, 10], 'gamma':[0.00001, 0.0001, 0.001, 0.01, 0.1]}
 searcher = ___
 
 #fit the searcher
