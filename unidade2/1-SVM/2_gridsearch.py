@@ -9,14 +9,15 @@ y = diabetes_df['diabetes'].values
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42, stratify=y)
 
 # Instantiate an RBF SVM
----
+svm = SVC(kernel = 'rbf', random_state=42)
 
 # Instantiate the GridSearchCV object and run the search
 parameters = {'gamma':[0.00001, 0.0001, 0.001, 0.01, 0.1]}
-searcher = ____
+searcher = GridSearchCV(svm,parameters, cv=5)
+
 
 #fit the searcher
-___
+searcher.fit(X_train, y_train)
 
 # Report the best parameters
 print("Best CV params", searcher.best_params_)
