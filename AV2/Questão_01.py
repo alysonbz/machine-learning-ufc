@@ -11,17 +11,17 @@ from sklearn.metrics import confusion_matrix, roc_curve, auc
 from sklearn.inspection import permutation_importance
 from sklearn.model_selection import train_test_split, GridSearchCV
 
-# Re-carregar o conjunto de dados
+
 df = pd.read_csv('C:\\Users\\anime\\PycharmProjects\\machine-learning-ufc\\adult_novo.csv')
 
-# Separar as features (X) e o target (y)
+
 X = df.drop('income', axis=1)
 y = df['income']
 
-# Dividir o conjunto de dados em treino e teste
+
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Definir modelos e parâmetros para o grid search
+
 models = {
     'Decision Tree': (DecisionTreeClassifier(), {'classifier__max_depth': [None, 10, 20, 30]}),
     'Random Forest': (RandomForestClassifier(), {'classifier__n_estimators': [50, 100, 150], 'classifier__max_depth': [None, 10, 20, 30]}),
@@ -33,35 +33,35 @@ models = {
     'SVM': (SVC(), {'classifier__C': [0.1, 1, 10], 'classifier__gamma': ['scale', 'auto'], 'classifier__kernel': ['linear', 'rbf']})
 }
 
-# Armazenar os melhores modelos encontrados
+
 best_models = {}
 
 for name, (model, params) in models.items():
-    # Definir transformações específicas para colunas categóricas
+
     categorical_features = ['workclass', 'occupation']
     categorical_transformer = Pipeline(steps=[('onehot', OneHotEncoder(handle_unknown='ignore'))])
 
-    # Combinar transformações
+
     preprocessor = ColumnTransformer(
         transformers=[
             ('cat', categorical_transformer, categorical_features),
         ])
 
-    # Adicionar o modelo ao pipeline
+
     model_pipe = Pipeline(steps=[('preprocessor', preprocessor), ('classifier', model)])
 
-    # Realizar grid search
+
     grid_search = GridSearchCV(model_pipe, params, cv=5, scoring='accuracy', n_jobs=-1)
     grid_search.fit(X_train, y_train)
 
-    # Armazenar o melhor modelo encontrado
+
     best_models[name] = grid_search.best_estimator_
 
-    # Imprimir os melhores parâmetros
+
     print(f'{name}: Melhores Parâmetros - {grid_search.best_params_}')
 
 
-# Função para plotar a matriz de confusão
+
 def plot_confusion_matrix(model, X_test, y_test):
     y_pred = model.predict(X_test)
     cm = confusion_matrix(y_test, y_pred)
@@ -73,7 +73,7 @@ def plot_confusion_matrix(model, X_test, y_test):
     plt.ylabel('Valores Reais')
     plt.show()
 
-# Função para plotar a curva ROC para cada modelo
+
 def plot_roc_curves(models, X_test, y_test):
     fig, axes = plt.subplots(2, 3, figsize=(15, 10))
     fig.suptitle('Curvas ROC para Modelos')
@@ -99,13 +99,13 @@ def plot_roc_curves(models, X_test, y_test):
     plt.tight_layout()
     plt.show()
 
-# Plotar matrizes de confusão
+
 plot_confusion_matrix(best_models['Decision Tree'], X_test, y_test)
 
-# Plotar curvas ROC
+
 plot_roc_curves(best_models, X_test, y_test)
 
-# Calcular e plotar importância de características para o Random Forest
+
 rf_model = best_models['Random Forest']
 perm_importance = permutation_importance(rf_model, X_test, y_test, n_repeats=30, random_state=42)
 
