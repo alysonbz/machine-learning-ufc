@@ -2,26 +2,26 @@ from src.utils import load_breast_cancer_dataset
 from sklearn.model_selection import train_test_split
 
 # Import DecisionTreeClassifier from sklearn.tree
-_____
+from sklearn.tree import DecisionTreeClassifier
 
 df_breast = load_breast_cancer_dataset()
 X = df_breast[["radius_mean","texture_mean","perimeter_mean","area_mean"]].values
 y  = df_breast[['diagnosis']].values
 
 # Instantiate a DecisionTreeClassifier 'dt' with a maximum depth of 6
-dt = ___
+dt = DecisionTreeClassifier(max_depth=6, random_state=1)
 
 
-X_train, X_test, y_train, y_test =___
+X_train, X_test, y_train, y_test = train_test_split
 
 # Fit dt to the training set
-___
+dt.fit(X_train, y_train)
 
 # Predict test set labels
-y_pred =
+y_pred = dt.predict(X_test)
 
 #print predicted labels
-__
+print(y_pred)
 
 # Compute test set accuracy
 acc = ___
