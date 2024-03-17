@@ -5,7 +5,7 @@ import mlxtend.plotting
 import numpy as np
 
 def load_breast_cancer_dataset():
-    df = pd.read_csv('../dataset/data.csv')
+    df = pd.read_csv('C:/machine-learning-ufc/unidade1/dataset/data.csv')
     le = LabelEncoder()
     df["diagnosis"] = le.fit_transform(df["diagnosis"])
     return df
