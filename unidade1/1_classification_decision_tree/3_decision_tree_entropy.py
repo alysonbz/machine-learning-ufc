@@ -10,7 +10,7 @@ X = df_breast[["radius_mean","texture_mean","perimeter_mean","area_mean","smooth
 y  = df_breast[['diagnosis']].values
 
 # divida o dataset em treino e teste
-X_train, X_test, y_train, y_test =___(__, __, __, random_state=42, stratify=y)
+X_train, X_test, y_train, y_test =train_test_split(__, __, __, random_state=42, stratify=y)
 
 # Instancie aas árvores de decisão com 2 possíveis critérios: entropy e gini
 dt_entropy = ___(max_depth=8,criterion=___, random_state=42)
