@@ -25,4 +25,3 @@ X_train, X_test, y_train, y_test = ---
 
 # call function to process log_reg
 --
-# call function to process dt
