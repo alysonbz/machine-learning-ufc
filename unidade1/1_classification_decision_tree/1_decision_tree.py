@@ -3,7 +3,7 @@ from sklearn.model_selection import train_test_split
 
 # Import DecisionTreeClassifier from sklearn.tree
 from sklearn.tree import DecisionTreeClassifier
-
+from sklearn.metrics import accuracy_score
 df_breast = load_breast_cancer_dataset()
 X = df_breast[["radius_mean","texture_mean","perimeter_mean","area_mean"]].values
 y  = df_breast[['diagnosis']].values
@@ -24,6 +24,6 @@ y_pred = dt.predict(X_test)
 print(y_pred)
 
 # Compute test set accuracy
-acc =
+acc = accuracy_score(y_test, y_pred)
 #print the score
 print("Test set accuracy: {:.2f}".format(acc))

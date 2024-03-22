@@ -10,8 +10,7 @@ def process_classifier(clf,X_train, X_test, y_train, y_test):
     clf.fit(X_train,y_train)
     y_pred= clf.predict(X_test)
     accuracy= accuracy_score(y_test, y_pred)
-    print('Accuracy'.=, accuracy=accuracy)
-
+    print('Accuracy:', accuracy)
 
 df_breast = load_breast_cancer_dataset()
 X = df_breast[["radius_mean","texture_mean","perimeter_mean","area_mean","smoothness_mean"]].values
