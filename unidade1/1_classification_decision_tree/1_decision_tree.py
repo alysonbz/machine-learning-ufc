@@ -25,6 +25,6 @@ y_pred = dt.predict(X_test)
 print(y_pred)
 
 # Compute test set accuracy
-acc = accuracy_score(y_pred, y_pred)
+acc = accuracy_score(y_test, y_pred)
 #print the score
 print("Test set accuracy: {:.2f}".format(acc))

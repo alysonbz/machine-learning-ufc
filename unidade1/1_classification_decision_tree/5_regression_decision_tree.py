@@ -17,7 +17,7 @@ dt = DecisionTreeRegressor(random_state=45,
                            max_depth=5,
                            min_samples_leaf=0.1)
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=45, test_size=0.3)
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=42, test_size=0.2)
 
 # Fit dt to the training set
 dt.fit(X_train, y_train)
@@ -30,3 +30,4 @@ mse_dt = MSE(y_test, y_pred)
 
 # Compute rmse_dt
 rmse_dt = mse_dt*(1/2)
+
