@@ -74,7 +74,6 @@ Nesta questão você vai realizar uma análise da entropia manual
 
 1)  Implemente a etapa de predição dentro da função  cada tabela de calculo da entropia para arvore de decisão.
 
-
 ### Questão 5
 
 [5_regression_decision_tree.py](5_regression_decision_tree.py)
