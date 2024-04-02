@@ -10,7 +10,6 @@ def process_classifier(clf,X_train, X_test, y_train, y_test):
     ---
 
 
-
 df_breast = load_breast_cancer_dataset()
 X = df_breast[["radius_mean","texture_mean","perimeter_mean","area_mean","smoothness_mean"]].values
 y  = df_breast[['diagnosis']].values
