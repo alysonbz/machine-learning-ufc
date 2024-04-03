@@ -42,3 +42,5 @@ print('Linear Regression test set RMSE: {:.2f}'.format(rmse_lr))
 
 # Print rmse_dt
 print('Regression Tree test set RMSE: {:.2f}'.format(rmse_dt))
+
+## resultados 5.12 e 4.37
