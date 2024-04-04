@@ -14,10 +14,10 @@ y = df['mpg'].values
 
 # Instantiate dt
 dt = DecisionTreeRegressor(random_state=45,
-                           max_depth=5,
-                           min_samples_leaf=0.1)
+                           max_depth=8,
+                           min_samples_leaf=0.13)
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=45, test_size=0.3)
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=45, test_size=0.2)
 
 # Fit dt to the training set
 dt.fit(X_train, y_train)
