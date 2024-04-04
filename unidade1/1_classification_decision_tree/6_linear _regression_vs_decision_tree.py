@@ -11,13 +11,13 @@ from sklearn.metrics import mean_squared_error as MSE
 def compute_regressor_rmse(reg,X_train, X_test,y_train,y_test):
 
     # Fit dt to the training set
-    dt.fit(X_train, y_train)
+    reg.fit(X_train, y_train)
 
     # Compute y_pred
-    y_pred = dt.predict(y_test)
+    y_pred = reg.predict(X_test)
 
     # Compute mse_dt
-    mse  = MSE(y_test, y_pred)
+    mse = MSE(y_test, y_pred)
 
     # Compute rmse_dt
     rmse = mse**(1/2)
