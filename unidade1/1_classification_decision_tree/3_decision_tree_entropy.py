@@ -14,8 +14,8 @@ y = df_breast[['diagnosis']].values
 X_train, X_test, y_train, y_test =train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
 
 # Instancie as árvores de decisão com 2 possíveis critérios: entropy e gini
-dt_entropy = DecisionTreeClassifier(max_depth=8,criterion= "entropy", random_state=42)
-dt_gini =DecisionTreeClassifier(max_depth=8,criterion= "gini", random_state=42)
+dt_entropy = DecisionTreeClassifier(max_depth=20,criterion="entropy", random_state=42)
+dt_gini =DecisionTreeClassifier(max_depth=20,criterion="gini", random_state=42)
 
 # Fit os objetos dt_gini e dt_entropy
 dt_entropy.fit(X_train, y_train)
