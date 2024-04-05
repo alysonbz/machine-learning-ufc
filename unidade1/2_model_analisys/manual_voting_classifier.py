@@ -18,11 +18,18 @@ class Voting_classifier:
 
 
     def fit(self, X_train, y_train):
-        pass
+        for name, estimator in self.base_estimator:
+            estimator.fit(X_train, y_train)
 
     def predict(self, X):
-        pass
+        predictions = []
+        final_prediction =[]
+        for name, estimator in self.base_estimator:
+            predictions.append(estimator.predict(X))
 
+        return final_prediction
+
+for predictions
 
 
 # Set seed for reproducibility
