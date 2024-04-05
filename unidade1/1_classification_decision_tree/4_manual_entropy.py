@@ -29,12 +29,11 @@ entropy_parent = -(P_pass * math.log2(P_pass) + P_fail * math.log2(P_fail))
 
 print('Entropia do nó "Parent":', entropy_parent)
 
-
+'''
 # Dividir o conjunto de dados com base no status de trabalho
 working_df = df[df['Working Status'] == 'W']
 not_working_df = df[df['Working Status'] == 'NW']
-
-''''# Calcular a entropia para cada subconjunto
+# Calcular a entropia para cada subconjunto
 entropy_working = -(len(working_df) / total_samples) * math.log2(len(working_df) / total_samples)
 entropy_not_working = -(len(not_working_df) / total_samples) * math.log2(len(not_working_df) / total_samples)
 
