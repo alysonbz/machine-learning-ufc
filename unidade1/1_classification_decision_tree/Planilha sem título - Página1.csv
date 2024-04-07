@@ -1,5 +1,4 @@
-Resp srl no,Target variable,Predictor variable,pred variable,Predictor var
-,Exame Result,Other online courses,Student background,Working Status
+Cont,Exame Result,Other online courses,Student background,Working Status
 1,Pass,y,Maths,NW
 2,Fail,n,Maths,W
 3,Fail,y,Maths,W
