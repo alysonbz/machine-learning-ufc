@@ -1,4 +1,5 @@
 # Import DecisionTreeClassifier
+import numpy as np
 from sklearn.tree import DecisionTreeClassifier
 # Import BaggingClassifier
 
@@ -17,13 +18,20 @@ class Bagging:
 
 
     def fit(self,X_train,y_train):
-        pass
+        n_samples = len(X_train)
+        self.oob = np.zeros(n_samples)
+        for i in range(self.n_estimators):
+            # Randomly sample with replacement
+            sample_indices = np.random.choice(n_samples, n_samples, replace=True)
+            oob_indices = np.delete(np.arange(n_samples), np.unique(sample_indices))
 
     def predict(self,X):
-        pass
+        predictions = np.array([estimator.predict(X) for estimator in self.estimators])
+        return np.round(np.mean(predictions, axis=0))
 
     def oob_score(self):
-        pass
+        y_pred = self.predict(X_train)
+        return accuracy_score(y_pred, y_train)
 
 # Set seed for reproducibility
 SEED=1
