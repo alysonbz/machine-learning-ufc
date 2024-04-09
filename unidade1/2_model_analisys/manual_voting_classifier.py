@@ -17,13 +17,19 @@ class Voting_classifier:
         self.base_estimator = base_estimator
 
 
+
     def fit(self, X_train, y_train):
-        pass
+        for name, estimator in self.base_estimators:
+            estimator.fit(X_train, y_train)
 
     def predict(self, X):
-        pass
-
-
+        for name, estimator in self_name_estimators:
+            predictions.append(estimator.predict(X))
+        y_pred = []
+        for i in range(len(X)):
+            votes = [prediction[i] for prediction in predictions]
+            y_pred.append(max(set(votes), key=votes.count))
+        return y_pred
 
 # Set seed for reproducibility
 SEED = 1

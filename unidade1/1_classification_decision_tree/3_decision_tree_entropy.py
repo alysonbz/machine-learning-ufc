@@ -10,28 +10,28 @@ X = df_breast[["radius_mean","texture_mean","perimeter_mean","area_mean","smooth
 y  = df_breast[['diagnosis']].values
 
 # divida o dataset em treino e teste
-X_train, X_test, y_train, y_test =___(__, __, __, random_state=42, stratify=y)
+X_train, X_test, y_train, y_test =train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
 
 # Instancie aas árvores de decisão com 2 possíveis critérios: entropy e gini
-dt_entropy = ___(max_depth=8,criterion=___, random_state=42)
-dt_gini =___(max_depth=8,criterion=__, random_state=42)
+dt_entropy = DecisionTreeClassifier(max_depth=8,criterion="entropy", random_state=42)
+dt_gini =DecisionTreeClassifier(max_depth=8,criterion="gini", random_state=42)
 
 # Fit os objetos dt_gini e dt_entropy
-___
-___
+dt_entropy.fit = (X_train, y_train)
+dt_gini.fit = (X_train, y_train)
 
 
 # Use dt_entropy e dt_gini para realizar predições no conjunto de teste
-y_pred_entropy= __
-y_pred_gini =
+y_pred_entropy= dt_entropy.predict(X_test)
+y_pred_gini = dt_gini.predict(X_test)
 
 # Evaluate accuracy_entropy
-accuracy_entropy = __
+accuracy_entropy = accuracy_score(y_test, y_pred_entropy)
 
-accuracy_gini = __
+accuracy_gini = accuracy_entropy(y_test, y_pred_gini)
 
 # Print accuracy_entropy
-___
+print("Accuracy using entropy criterion:", accuracy_entropy)
 
 # Print accuracy_gini
-__
+print("Accuracy using gini criterion:", accuracy_gini)
