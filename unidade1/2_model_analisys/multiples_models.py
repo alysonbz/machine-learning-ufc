@@ -10,6 +10,11 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier as knn
 from sklearn.ensemble import VotingClassifier
 
+import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from src.utils import indian_liver_dataset
 from sklearn.preprocessing import StandardScaler
 
