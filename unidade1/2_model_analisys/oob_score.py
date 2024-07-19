@@ -20,7 +20,7 @@ X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.2,random_sta
 dt = DecisionTreeClassifier(random_state=3)
 
 # Instantiate bc
-bc = BaggingClassifier(base_estimator=dt, n_estimators=50, oob_score=True, random_state=SEED)
+bc = BaggingClassifier(estimator=dt, n_estimators=50, oob_score=True, random_state=SEED)
 
 # Fit bc to the training set
 bc.fit(X_train, y_train)
@@ -29,7 +29,7 @@ bc.fit(X_train, y_train)
 y_pred = bc.predict(X_test)
 
 # Evaluate test set accuracy
-acc_test = accuracy_score(X_test, y_pred)
+acc_test = accuracy_score(y_pred, y_test)
 
 # Evaluate OOB accuracy
 acc_oob = bc.oob_score_

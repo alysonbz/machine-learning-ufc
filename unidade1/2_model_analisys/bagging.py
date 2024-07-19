@@ -23,7 +23,7 @@ X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.2,random_sta
 dt = DecisionTreeClassifier(random_state=SEED)
 
 # Instantiate bc
-bc = BaggingClassifier(base_estimator=dt, n_estimators=50, random_state=SEED)
+bc = BaggingClassifier(estimator=dt, n_estimators=50, random_state=SEED)
 
 # Fit bc to the training set
 bc.fit(X_train, y_train)
