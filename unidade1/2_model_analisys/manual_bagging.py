@@ -33,7 +33,8 @@ class Bagging:
 
             # Calculate out-of-bag score for current sample
             y_pred = estimator.predict(X_train[oob_indices])
-            self.oob[oob_indices] = np.mean(y_pred == y_train[oob_indices])
+            self.oob[oob_indices] = estimator.predict(X_train[oob_indices])
+#calcular o oob_score
 
     def predict(self, X):
         predictions = np.array([estimator.predict(X) for estimator in self.estimators])

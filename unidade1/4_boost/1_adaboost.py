@@ -2,15 +2,14 @@ from src.utils import indian_liver_dataset
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 
-
 # Import DecisionTreeClassifier
-__
+from sklearn.tree import DecisionTreeClassifier
 
 # Import AdaBoostClassifier
-__
+from sklearn.ensemble import AdaBoostClassifier
 
 # Import roc_auc_score
-__
+from sklearn.metrics import roc_auc_score
 
 SEED=1
 df = indian_liver_dataset()
@@ -22,19 +21,19 @@ X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.3,random_sta
 
 
 # Instantiate dt
-dt = __
+dt = DecisionTreeClassifier(max_depth = 1, random_state = SEED)
 
 # Instantiate ada
-ada = __
+ada = AdaBoostClassifier(estimator = dt, n_estimators=100)
 
 # Fit ada to the training set
-__
+ada.fit(X_train, y_train)
 
 # Compute the probabilities of obtaining the positive class
-y_pred_proba = ___
+y_pred_proba = ada.predict_proba(X_test)[:,1]
 
 # Evaluate test-set roc_auc_score
-ada_roc_auc = __
+ada_roc_auc = roc_auc_score(X_test, y_pred_proba)
 
 # Print roc_auc_score
 print('ROC AUC score: {:.2f}'.format(ada_roc_auc))
