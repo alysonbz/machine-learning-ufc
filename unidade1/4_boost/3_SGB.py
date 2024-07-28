@@ -11,19 +11,19 @@ y = df['count'].values
 X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.2,random_state=2)
 
 # Instantiate sgbr
-sgbr = ___
+sgbr = GradientBoostingRegressor(max_depth=4, subsample=0.9, max_features=0.75, n_estimators=200,random_state=2)
 
 # Fit sgbr to the training set
-___
+sgbr.fit(X_train, y_train)
 
 # Predict test set labels
-y_pred = __
+y_pred = sgbr.predict(X_test)
 
 # Compute MSE
-mse_test = ___
+mse_test = MSE(y_test, y_pred)
 
 # Compute RMSE
-rmse_test = ___
+rmse_test = mse_test**(1/2)
 
 # Print RMSE
-___
+print('Test set RMSE of gb: {:.3f}'.format(rmse_test))

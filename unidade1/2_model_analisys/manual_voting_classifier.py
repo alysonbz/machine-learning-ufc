@@ -13,16 +13,27 @@ from sklearn.neighbors import KNeighborsClassifier as KNN
 
 class Voting_classifier:
 
-    def __init__(self, base_estimator):
-        self.base_estimator = base_estimator
+    def __init__(self, base_estimators):
+        self.base_estimators = base_estimators
+
 
 
     def fit(self, X_train, y_train):
-        pass
+        for name, estimator in self.base_estimators:
+            estimator.fit(X_train,y_train)
+
 
     def predict(self, X):
-        pass
+        predictions = []
+        for name, estimator in self.base_estimators:
+            predictions.append(estimator.predict(X))
 
+            final_predictions = []
+            for i in range(len(X)):
+                votes = [pred[i] for pred in predictions]
+                final_predictions.append(max(set(votes), key=votes.count))
+
+            return final_predictions
 
 
 # Set seed for reproducibility
@@ -47,7 +58,7 @@ dt = DecisionTreeClassifier(min_samples_leaf=0.13, random_state=SEED)
 classifiers = [('Logistic Regression', lr), ('K Nearest Neighbours', knn), ('Classification Tree', dt)]
 
 # Instantiate bc
-vc =  Voting_classifier(base_estimator=classifiers)
+vc = Voting_classifier(base_estimators=classifiers)
 
 # Fit bc to the training set
 vc.fit(X_train, y_train)
