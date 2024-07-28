@@ -1,0 +1,16 @@
+Cont,Exame Result,Other online courses,Student background,Working Status
+1,Pass,y,Maths,NW
+2,Fail,n,Maths,W
+3,Fail,y,Maths,W
+4,Pass,y,CS,NW
+5,Fail,n,Other,W
+6,Fail,y,Other,W
+7,Pass,y,Maths,NW
+8,Pass,y,CS,NW
+9,Pass,n,Maths,W
+10,Pass,n,CS,W
+11,Pass,y,CS,W
+12,Pass,n,Maths,NW
+13,Fail,y,Other,W
+14,Fail,n,Other,NW
+15,Fail,n,Maths,W
