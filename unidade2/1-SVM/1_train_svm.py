@@ -20,10 +20,10 @@ svm.fit(X_train, y_train)
 y_pred = svm.predict(X_test)
 
 # print classification report matrix
-print (classification_report())
+print(classification_report(y_test, y_pred))
 
 # show confusion matrix
-cm = ---
+cm = confusion_matrix(y_test, y_pred)
 disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=svm.classes_)
 disp.plot()
 plt.show()

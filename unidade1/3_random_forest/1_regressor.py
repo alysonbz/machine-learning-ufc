@@ -17,7 +17,7 @@ X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.2,random_sta
 
 
 # Instantiate rf
-rf = RandomForestRegressor(n_estimators=50, random_state=2)
+rf = RandomForestRegressor(n_estimators=25, random_state=2)
 
 # Fit rf to the training set
 rf.fit(X_train, y_train)
