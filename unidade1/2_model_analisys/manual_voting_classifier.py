@@ -9,19 +9,29 @@ from sklearn.metrics import accuracy_score
 from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier as KNN
+from collections import Counter
 
 
 class Voting_classifier:
 
-    def __init__(self, base_estimator):
-        self.base_estimator = base_estimator
+    def __init__(self, base_estimators):
+        self.base_estimators = base_estimators
 
 
     def fit(self, X_train, y_train):
-        pass
+        for name, estimator in self.base_estimators:
+            estimator.fit(X_train, y_train)
 
     def predict(self, X):
-        pass
+        predictions = [estimator.predict(X) for name, estimator in self.base_estimators]
+
+        # Transpose the predictions list to have each row corresponding to a sample
+        predictions = list(zip(*predictions))
+
+        # Use majority voting to determine the final prediction for each sample
+        final_prediction = [Counter(row).most_common(1)[0][0] for row in predictions]
+
+        return final_prediction
 
 
 
@@ -47,7 +57,7 @@ dt = DecisionTreeClassifier(min_samples_leaf=0.13, random_state=SEED)
 classifiers = [('Logistic Regression', lr), ('K Nearest Neighbours', knn), ('Classification Tree', dt)]
 
 # Instantiate bc
-vc =  Voting_classifier(base_estimator=classifiers)
+vc =  Voting_classifier(base_estimators=classifiers)
 
 # Fit bc to the training set
 vc.fit(X_train, y_train)
