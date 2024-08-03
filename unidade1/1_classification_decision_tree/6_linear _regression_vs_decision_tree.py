@@ -1,4 +1,4 @@
-from src.utils import load_auto_dataset
+import pandas as pd
 from sklearn.model_selection import train_test_split
 
 # Import DecisionTreeRegressor from sklearn.tree
@@ -9,6 +9,8 @@ from sklearn.linear_model import LinearRegression
 
 # Import mean_squared_error from sklearn.metrics as MSE
 from sklearn.metrics import mean_squared_error as MSE
+
+df = pd.read_csv("../dataset/Housing.csv")
 
 def compute_regressor_rmse(reg,X_train, X_test,y_train,y_test):
 
@@ -26,7 +28,7 @@ def compute_regressor_rmse(reg,X_train, X_test,y_train,y_test):
 
     return rmse
 
-df = load_auto_dataset()
+#df = load_auto_dataset()
 X = df.drop(['mpg', 'origin'], axis=1)
 y = df['mpg'].values
 

@@ -1,4 +1,6 @@
 # Import DecisionTreeClassifier
+from collections import Counter
+
 from sklearn.tree import DecisionTreeClassifier
 # Import BaggingClassifier
 
@@ -12,17 +14,31 @@ from sklearn.neighbors import KNeighborsClassifier as KNN
 
 
 class Voting_classifier:
-
+#função cria uma lista vazia para colocar os modelos
     def __init__(self, base_estimator):
         self.base_estimator = base_estimator
+        self.models = []
 
-
+# faz o fit
     def fit(self, X_train, y_train):
-        pass
+        for name, classifiers in self.base_estimator:
+            self.models.append(classifiers.fit(X_train, y_train))
 
+#realização a predição de voto
     def predict(self, X):
-        pass
+#armazena as previsões de cada classificador
+        predicts=[]
+        for classifiers in self.models:
+            predicts.append(classifiers.predict(X))
+        transport_predict = []
+        for i in range(len(X)):
+            transport_predict.append([predicts[j][i] for j in range(len(self.models))])
+        final_predicts = [self.majority_vote(pred) for pred in transport_predict]
+        return final_predicts
 
+    def majority_vote(self, predidtions):
+        vote_counts = Counter(predidtions)
+        return vote_counts.most_common(1)[0][0]
 
 
 # Set seed for reproducibility
@@ -60,3 +76,5 @@ acc_test = accuracy_score(y_pred, y_test)
 
 # Print acc_test and acc_oob
 print('Test set accuracy: {:.3f}'.format(acc_test))
+
+
