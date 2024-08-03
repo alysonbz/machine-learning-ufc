@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
+<<<<<<< HEAD
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/ml" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.11 (machine-learning-ufc)" jdkType="Python SDK" />
+=======
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="jdk" jdkName="ml" jdkType="Python SDK" />
+>>>>>>> 3fb0e2f7584aed4e2782c225b2e17baf391d6833
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

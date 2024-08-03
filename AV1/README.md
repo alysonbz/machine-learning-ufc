@@ -9,26 +9,52 @@ https://docs.google.com/document/d/1hIwPx9W-k3LnXRJrkWYTsbrtx4NfP88_/edit?usp=sh
 
 ##  Aluno - Dataset
 
-BRUNA BARRETO MESQUITA : https://www.kaggle.com/datasets/itachi9604/disease-symptom-description-dataset?select=dataset.csv
+ANA LIVIA SOUSA DAVI TAVEIRA : https://www.kaggle.com/datasets/itachi9604/disease-symptom-description-dataset?select=dataset.csv
 
 questão 1 - 
 ![img.png](img.png)
 
-LAURA DE LIMA MENDES : https://www.kaggle.com/datasets/uciml/red-wine-quality-cortez-et-al-2009
+EMILY CAMELO MENDONCA : https://www.kaggle.com/datasets/uciml/red-wine-quality-cortez-et-al-2009
 
 questão 1 - 
 ![img_1.png](img_1.png)
 
-PEDRO COELHO SAMPAIO FILHO:  https://www.kaggle.com/datasets/uciml/adult-census-income
+ERICK RAMOS COUTINHO:  https://www.kaggle.com/datasets/uciml/adult-census-income
 
 questão 1 -
 ![img_2.png](img_2.png)
 
-THAYS FERREIRA UCHOA ALBUQUERQUE:  https://www.kaggle.com/datasets/lucidlenn/sloan-digital-sky-survey
+ERYKA CARVALHO DA SILVA:  https://www.kaggle.com/datasets/lucidlenn/sloan-digital-sky-survey
 
 questão 1 - 
 ![img_3.png](img_3.png)
 
+
+LUCIANA SOUSA MARTINS: https://www.kaggle.com/datasets/nikhil7280/weather-type-classification
+
+questão 1 - 
+![img_4.png](img_4.png)
+
+LUIS SAVIO GOMES ROSA: https://www.kaggle.com/datasets/gorororororo23/plant-growth-data-classification/data
+
+questão 1 - 
+![img_5.png](img_5.png)
+
+
+MAVERICK ALEKYNE DE SOUSA RIBEIRO: https://www.kaggle.com/datasets/rabieelkharoua/alzheimers-disease-dataset
+
+questão 1 - 
+![img_7.png](img_7.png)
+
+PAULO HENRIQUE SANTOS MARQUES: https://www.kaggle.com/datasets/fahmidachowdhury/domestic-violence-against-women/data
+
+questão 1 - 
+![img_8.png](img_8.png)
+
+SHELDA DE SOUZA RAMOS: https://www.kaggle.com/datasets/umerrtx/machine-failure-prediction-using-sensor-data
+
+questão 1 - 
+![img_9.png](img_9.png)
 ### Questão 1
 
 ```questao1.py```
@@ -72,7 +98,7 @@ a melhor forma de realizar a classificação.
 ### Observações para o Relatório
 
 Discutir **organizadamente** na sessão de resultados os números obtidos de cada questão.
-Ao concluir o relatório, compartilhar com **alysonbnr@ufc.br** até 03/11/2023.
+Ao concluir o relatório, compartilhar com **alysonbnr@ufc.br** até 06/08/2024.
 
 ### Apresentação 09/11/2023
 
