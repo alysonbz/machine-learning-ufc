@@ -1,0 +1,15 @@
+N1,N2,N3,CLASS
+Rainy,Medium,East,Y
+Cloudy,High,West,N
+Cloudy,High,East,Y
+Sunny,Medium,East,Y
+Sunny,High,West,Y
+Sunny,High,East,N
+Rainy,Low,East,N
+Sunny,Low,West,Y
+Cloudy,Medium,West,N
+Cloudy,Medium,East,Y
+Sunny,High,East,Y
+Rainy,High,East,N
+Rainy,Low,West,Y
+Sunny,Medium,East,N
