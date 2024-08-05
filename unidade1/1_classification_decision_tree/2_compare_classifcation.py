@@ -1,4 +1,6 @@
-#import LogisticRegression from sklearn.linear_model
+
+import warnings
+warnings.filterwarnings("ignore")
 from src.utils import load_breast_cancer_dataset
 from sklearn.linear_model import  LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
