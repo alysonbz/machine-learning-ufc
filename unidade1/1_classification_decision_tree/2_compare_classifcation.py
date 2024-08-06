@@ -1,3 +1,5 @@
+import warnings
+warnings.filterwarnings("ignore")
 # Import LogisticRegression from sklearn.linear_model
 from src.utils import load_breast_cancer_dataset
 from sklearn.linear_model import  LogisticRegression

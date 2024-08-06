@@ -9,19 +9,28 @@ from sklearn.metrics import accuracy_score
 from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier as KNN
+from scipy.stats import mode
+from src.utils import indian_liver_dataset
+import numpy as np
 
 
 class Voting_classifier:
-
     def __init__(self, base_estimator):
-        self.base_estimator = base_estimator
+        self.base_estimator = base_estimator #lista de estimadores
+        self.models = []
 
 
     def fit(self, X_train, y_train):
-        pass
+        self.models = []
+        for name, classifier in self.base_estimator:
+            model = classifier.fit(X_train, y_train) #Treina cada classificador e armazena os modelos em self.models
+            self.models.append((name, model))
 
     def predict(self, X):
-        pass
+        predictions = np.array([model.predict(X) for name, model in self.models]) #coleta as previsões de todos os modelos
+        majority_votes = mode(predictions, axis=0)[0].flatten() #calcula a votação majoritária
+        return majority_votes #contém os rótulos finais após a votação majoritária
+
 
 
 

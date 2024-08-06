@@ -12,7 +12,6 @@ y  = df_breast[['diagnosis']].values
 # Instantiate a DecisionTreeClassifier 'dt' with a maximum depth of 6
 dt = DecisionTreeClassifier(max_depth=6)
 
-
 X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=1, test_size=0.2)
 
 # Fit dt to the training set

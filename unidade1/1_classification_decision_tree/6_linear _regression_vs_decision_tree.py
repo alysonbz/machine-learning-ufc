@@ -28,7 +28,7 @@ X = df.drop(['mpg','origin'],axis=1)
 y = df['mpg'].values
 
 # Instantiate dt and lr
-dt = DecisionTreeRegressor()
+dt = DecisionTreeRegressor(max_depth=6)
 lr = LinearRegression()
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=3)

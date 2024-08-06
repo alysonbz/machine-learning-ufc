@@ -1,6 +1,6 @@
 from sklearn.model_selection import train_test_split
 # Import GradientBoostingRegressor
-_____
+from sklearn.ensemble import GradientBoostingRegressor
 # Import mean_squared_error as MSE
 from sklearn.metrics import mean_squared_error as MSE
 from src.utils import bike_rental_dataset
@@ -13,19 +13,19 @@ X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.2,random_sta
 
 
 # Instantiate gb
-gb = ___
+gb = GradientBoostingRegressor(n_estimators=200, max_depth=4, random_state=2)
 
 # Fit gb to the training set
-___
+gb.fit(X_train, y_train)
 
 # Predict test set labels
-y_pred = __
+y_pred = gb.predict(X_test)
 
 # Compute MSE
-mse_test = __
+mse_test = MSE(y_test, y_pred)
 
 # Compute RMSE
-rmse_test = ___
+rmse_test = MSE(y_test,y_pred)**(1/2)
 
 # Print RMSE
-print('Test set RMSE of gb: {:.3f}'.format(___))
+print('Test set RMSE of gb: {:.3f}'.format(rmse_test))
