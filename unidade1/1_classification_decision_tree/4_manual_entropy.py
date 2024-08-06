@@ -6,7 +6,6 @@ def entropy(probs):
     return -np.sum(probs * np.log2(probs))
 
 def entropy_of_list(a_list):
-    """Calcula a entropia de uma lista"""
     integer_list = [1 if x == 'Y' else 0 for x in a_list]
     counts = np.bincount(integer_list)
     probs = counts / len(a_list)
@@ -31,11 +30,9 @@ df = tab1()
 print(df.head(15))
 
 def tab2():
-    # Cálculo da entropia para o conjunto de dados
     overall_entropy = entropy_of_list(df.index.get_level_values('Target'))
     print(f"Entropia total: {overall_entropy}")
 
-    # Cálculo da entropia para cada preditor
     predictors = df.columns
     for predictor in predictors:
         values = df[predictor].unique()
