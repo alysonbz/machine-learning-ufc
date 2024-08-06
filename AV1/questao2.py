@@ -2,13 +2,16 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score,  classification_report, mean_squared_error as MSE, roc_curve, auc, RocCurveDisplay
 
 df = pd.read_csv("/home/ufc/savim/machine-learning-ufc/AV1/plant_growth_data.csv")
 
+#print(df.head())
 #print(df.describe())
+#print(df.isnull().sum())
+#print(df.shape)
 
 # Criação de um LabelEncoder para cada coluna categórica
 le_soil = LabelEncoder()
@@ -65,6 +68,5 @@ plt.figure(figsize=(10, 6))
 roc_display = RocCurveDisplay(fpr=fpr, tpr=tpr, roc_auc=roc_auc, estimator_name='Decision Tree')
 roc_display.plot()
 plt.show()
-
 
 df.to_csv('C:\\Users\\UFC\\Desktop\\savim\\machine-learning-ufc\\AV1\\plant_growth_data_pos.csv', index=False)
