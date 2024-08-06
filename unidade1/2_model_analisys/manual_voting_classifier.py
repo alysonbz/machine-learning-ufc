@@ -1,38 +1,37 @@
-# Import DecisionTreeClassifier
+# Importações necessárias
+from collections import Counter
+import numpy as np
 from sklearn.tree import DecisionTreeClassifier
-# Import BaggingClassifier
-
-from src.utils import indian_liver_dataset
+from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier as KNN
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score
-from sklearn.linear_model import LogisticRegression
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.neighbors import KNeighborsClassifier as KNN
 
+# Função para carregar o dataset
+from src.utils import indian_liver_dataset
 
+# Classe Voting_classifier
 class Voting_classifier:
-
     def __init__(self, base_estimator):
-        self.base_estimator = base_estimator
-
-
+        self.base_estimator = base_estimator  # Lista de estimadores
+        self.models = []
 
     def fit(self, X_train, y_train):
-        for name, estimator in self.base_estimators:
-            estimator.fit(X_train, y_train)
+        self.models = []
+        for name, classifier in self.base_estimator:
+            model = classifier.fit(X_train, y_train)
+            self.models.append((name, model))
 
     def predict(self, X):
-        for name, estimator in self_name_estimators:
-            predictions.append(estimator.predict(X))
-        y_pred = []
-        for i in range(len(X)):
-            votes = [prediction[i] for prediction in predictions]
-            y_pred.append(max(set(votes), key=votes.count))
-        return y_pred
+        predictions = np.array([model.predict(X) for name, model in self.models])
+        majority_votes = np.apply_along_axis(lambda x: Counter(x).most_common(1)[0][0], axis=0, arr=predictions)
+        return majority_votes
 
-# Set seed for reproducibility
+# Define a semente para reprodutibilidade
 SEED = 1
+
+# Carrega o dataset e prepara os dados
 df = indian_liver_dataset()
 X = df.drop(['is_patient', 'gender'], axis=1)
 scaler = StandardScaler()
@@ -40,29 +39,27 @@ X = scaler.fit_transform(X)
 y = df['is_patient'].values
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=SEED)
 
-# Instantiate lr
+# Instancia os classificadores
 lr = LogisticRegression(random_state=SEED)
-
-# Instantiate knn
 knn = KNN(n_neighbors=27)
-
-# Instantiate dt
 dt = DecisionTreeClassifier(min_samples_leaf=0.13, random_state=SEED)
 
-# Define the list classifiers
+# Define a lista de classificadores
 classifiers = [('Logistic Regression', lr), ('K Nearest Neighbours', knn), ('Classification Tree', dt)]
 
-# Instantiate bc
-vc =  Voting_classifier(base_estimator=classifiers)
+# Instancia o Voting_classifier
+vc = Voting_classifier(base_estimator=classifiers)
 
-# Fit bc to the training set
+# Treina o Voting_classifier no conjunto de treinamento
 vc.fit(X_train, y_train)
 
-# Predict test set labels
+# Prediz os rótulos do conjunto de teste
 y_pred = vc.predict(X_test)
 
-# Evaluate acc_test
+# Avalia a precisão no conjunto de teste
 acc_test = accuracy_score(y_pred, y_test)
 
-# Print acc_test and acc_oob
+# Imprime a precisão do conjunto de teste
 print('Test set accuracy: {:.3f}'.format(acc_test))
+
+
