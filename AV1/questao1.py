@@ -1,11 +1,13 @@
 '''Converta o dataset de imagem para um dataframe e ,utilizando calculo do indice de Gini e
 entropia determine as duas possibilidades de nó raíz da árvore de decisão. A ultima coluna
 do dataset é a coluna alvo.'''
+
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score
+from sklearn.preprocessing import LabelEncoder
 
 sick = { 'Patient_ID': ['p1','p2','p3','p4','p5','p6','p7','p8','p9','p10',
                         'p11','p12','p13','p14'],
@@ -24,19 +26,36 @@ sick = { 'Patient_ID': ['p1','p2','p3','p4','p5','p6','p7','p8','p9','p10',
                   'Drug B','Drug A']
 }
 
-sick2 = {
-    'Age': {'young': 0, 'middle-age': 1, 'senior': 2},
-    'Sex': {'F': 0, 'M': 1},
-    'BP': {'low': 0, 'normal': 1, 'high': 2},
-    'Cholesterol': {'normal': 0, 'high': 1},
-    'Drug': {'Drug A': 0, 'Drug B': 1}
-}
-
 sick = pd.DataFrame(sick)
-sk = sick.replace(sick2)
 
-print(sk)
+colunas = {}
+for column in sick.select_dtypes(include=['object']).columns:
+    colunas[column] = LabelEncoder()
+    sick[column] = colunas[column].fit_transform(sick[column])
 
+print(sick)
 
+X = sick.drop(columns='Drug')
+y = sick['Drug']
 
+arvore = DecisionTreeClassifier(random_state=42)
+arvore.fit(X, y)
 
+importancia_features_gini = arvore.feature_importances_
+importancia_features_data = pd.DataFrame({'Features':X.columns, 'Importância de Gini': importancia_features_gini})
+importancia_features_data = importancia_features_data.sort_values(by='Importância de Gini', ascending=False)
+
+print(f'Importância das features pelo índice de Gini:\n {importancia_features_data}')
+
+arvore_entropia = DecisionTreeClassifier(criterion='entropy', random_state=42)
+arvore_entropia.fit(X, y)
+importancia_features_entropia = arvore_entropia.feature_importances_
+
+importancia_features_entropia_data = pd.DataFrame({'Features':X.columns, 'Importância da Entropia': importancia_features_entropia})
+importancia_features_entropia_data = importancia_features_entropia_data.sort_values(by='Importância da Entropia', ascending=False)
+
+print(f'\nImportância das features pela Entropia: \n{importancia_features_entropia_data}\n')
+
+print(f'\nDuas melhores possibilidades de nó raiz pela Entropia: {importancia_features_entropia_data["Features"].head(2).tolist()}\n')
+
+print(f'\nDuas melhores possibilidades de nó raiz pelo índice de Gini: {importancia_features_data["Features"].head(2).tolist()}\n')
