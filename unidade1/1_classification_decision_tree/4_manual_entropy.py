@@ -1,6 +1,5 @@
 import pandas as pd
 import math
-
 df = pd.read_csv('Planilha manual entropy - Página1.csv')
 
 # Parent

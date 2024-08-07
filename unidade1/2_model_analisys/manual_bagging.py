@@ -62,7 +62,7 @@ dt = DecisionTreeClassifier(random_state=1)
 bc = Bagging(base_estimator=dt, n_estimators=50)
 
 # Fit bc to the training set
-bc.fit(X_train, y_train)
+bc.fit(X_train,y_train)
 
 # Predict test set labels
 y_pred = bc.predict(X_test)
