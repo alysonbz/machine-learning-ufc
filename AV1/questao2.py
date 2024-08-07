@@ -3,7 +3,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.ensemble import RandomForestClassifier
-import matplotlib.pyplot as plt
+
 
 ### Dataset(dados)
 df = pd.read_csv('alzheimers_disease_data.csv')
@@ -13,17 +13,15 @@ df = pd.read_csv('alzheimers_disease_data.csv')
 print(df.isnull().sum()) #0
 print(df.isna().sum()) #0
 print(df.shape) #(2149, 35)
-print(df.info()) #22 int64  ,13 float64
+print(df.info()) #22 int64  ,12 float64 e 1 object
 print(df.value_counts())
 print(df.dtypes)'''
-
 
 # Exclusão de dados inuteis
 df = df.drop('DoctorInCharge', axis = 1)
 
 ### Colunas mais importantes do dataset
 ### 1- Utilizando o RandomForestClassifier para obter as variaveis mais importantes
-
 
 # Separar as variáveis independentes e a variável dependente
 X = df.drop('Diagnosis', axis=1)
@@ -96,7 +94,7 @@ df = df.drop(['Confusion', 'HeadInjury', 'PersonalityChanges', 'DifficultyComple
 # Coluna alvo Diagnosis
 ### Outro modelo para variaveis mais importantes
 
-from sklearn.feature_selection import SelectKBest, f_classif
+'''from sklearn.feature_selection import SelectKBest, f_classif
 # Selecionar as k melhores características
 k = 5
 selector = SelectKBest(score_func=f_classif, k=k)
@@ -104,9 +102,9 @@ X_new = selector.fit_transform(X, y)
 
 # Mostrar as colunas selecionadas
 selected_features = selector.get_support(indices=True)
-print(X.columns[selected_features])
+print(X.columns[selected_features])'''
 
-###
+### Arovre de decisao para classificação
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report, roc_curve, roc_auc_score, auc
@@ -121,7 +119,7 @@ dt.fit(X_train, y_train)
 
 y_pred = dt.predict(X_test)
 
-print(y_pred)
+
 
 print('a accuracy_score é:\n',accuracy_score(y_test, y_pred))
 print('O Confusion_matrix é:\n', confusion_matrix(y_test, y_pred))
@@ -145,4 +143,8 @@ plt.title('Curva ROC')
 plt.legend(loc='lower right')
 plt.show()
 
+
 df.to_csv('dados1.csv', index=False)
+
+
+

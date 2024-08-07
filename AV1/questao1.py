@@ -1,8 +1,7 @@
-#questão 1
 import pandas as pd
-from sklearn.metrics import make_scorer
 from collections import Counter
 import numpy as np
+
 # Dados formatados
 dados = {
     'State': ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'D.C.', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas'],
@@ -18,12 +17,6 @@ dados = {
 # Criar DataFrame
 df = pd.DataFrame(dados)
 
-# Exibir DataFrame
-print(df)
-
-
-
-
 def gini_impurity(labels):
     """Calculate the Gini Impurity for a list of labels."""
     total_count = len(labels)
@@ -32,7 +25,6 @@ def gini_impurity(labels):
     label_counts = Counter(labels)
     impurity = 1 - sum((count / total_count) ** 2 for count in label_counts.values())
     return impurity
-
 
 def entropy(labels):
     """Calculate the entropy for a list of labels."""
@@ -43,7 +35,6 @@ def entropy(labels):
     entropy_value = -sum(
         (count / total_count) * np.log2(count / total_count) for count in label_counts.values() if count != 0)
     return entropy_value
-
 
 def calculate_gini_and_entropy_for_feature(feature):
     """Calculate the Gini impurity and entropy for a given feature."""
@@ -61,7 +52,6 @@ def calculate_gini_and_entropy_for_feature(feature):
 
     return gini_total, entropy_total
 
-
 # Calcular o índice de Gini e a entropia para cada feature
 features = ['Median Income', "Bachelor's Degree or Higher", 'White', 'Political Leaning', 'Income', 'Education']
 gini_values = {}
@@ -78,4 +68,3 @@ best_entropy_features = sorted(entropy_values, key=entropy_values.get)[:2]
 
 print("Melhores features pelo índice de Gini:", best_gini_features)
 print("Melhores features pela entropia:", best_entropy_features)
-
