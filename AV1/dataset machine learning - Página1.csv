@@ -1,0 +1,15 @@
+credit_history,salary,property,loan_status
+medium,high,no,no
+medium,high,yes,no
+high,high,no,yes
+low,medium,no,yes
+low,low,no,yes
+low,low,yes,no
+high,low,yes,yes
+medium,medium,no,no
+medium,low,no,yes
+low,medium,no,yes
+medium,medium,yes,yes
+high,medium,yes,yes
+high,high,no,yes
+low,medium,yes,no
