@@ -34,7 +34,6 @@ models = [
     DecisionTreeClassifier(),
     KNeighborsClassifier()
 ]
-
 # Treinamento e avaliação
 rc = RandomClassifier(models)
 rc.fit(X_train, y_train)

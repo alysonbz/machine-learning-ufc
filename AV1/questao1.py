@@ -1,34 +1,37 @@
 import pandas as pd
+from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score
-from sklearn.preprocessing import LabelEncoder
 
-# Carregar dados
-df = pd.read_csv('Skyserver.csv')
+# Carregar o dataset
+data = pd.read_csv('Skyserver.csv')
 
-# Codificação da coluna alvo
-le = LabelEncoder()
-df['class'] = le.fit_transform(df['class'])
+# Separar as features (X) e a classe alvo (y)
+X = data.drop('class', axis=1)
+y = data['class']
 
-# Separar as características e a variável alvo
-X = df.drop('class', axis=1)
-y = df['class']
+# Dividir os dados em conjunto de treinamento e teste
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Calcular ganho de informação para cada feature
-clf = DecisionTreeClassifier(criterion='gini')
-clf.fit(X, y)
+# Criar a árvore de decisão com o índice de Gini
+clf_gini = DecisionTreeClassifier(criterion="gini")
+clf_gini.fit(X_train, y_train)
 
-# Obter importância das features
-importances = clf.feature_importances_
-feature_names = X.columns
-gini_importances = pd.Series(importances, index=feature_names).sort_values(ascending=False)
+# Fazer previsões
+y_pred_gini = clf_gini.predict(X_test)
 
-print("Importância das Features (Gini):\n", gini_importances)
+# Avaliar a acurácia
+accuracy_gini = accuracy_score(y_test, y_pred_gini)
+print("Accuracy (Gini):", accuracy_gini)
 
-# Realizar o mesmo com 'entropy' para comparar
-clf_entropy = DecisionTreeClassifier(criterion='entropy')
-clf_entropy.fit(X, y)
-importances_entropy = clf_entropy.feature_importances_
-entropy_importances = pd.Series(importances_entropy, index=feature_names).sort_values(ascending=False)
+# Criar a árvore de decisão com a entropia
+clf_entropy = DecisionTreeClassifier(criterion="entropy")
+clf_entropy.fit(X_train, y_train)
 
-print("Importância das Features (Entropia):\n", entropy_importances)
+# Fazer previsões
+y_pred_entropy = clf_entropy.predict(X_test)
+
+# Avaliar a acurácia
+accuracy_entropy = accuracy_score(y_test, y_pred_entropy)
+print("Accuracy (Entropy):", accuracy_entropy)
+
