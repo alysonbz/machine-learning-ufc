@@ -6,7 +6,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 
 ### Dataset(dados)
-df = pd.read_csv('alzheimers_disease_data.csv')
+df = pd.read_csv('../AV2/alzheimers_disease_data.csv')
 
 ### Analises descritivas
 '''print(df.columns) # 35 colunas

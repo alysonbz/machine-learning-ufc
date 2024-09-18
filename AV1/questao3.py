@@ -8,7 +8,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # Carregar o dataset
-df = pd.read_csv('alzheimers_disease_data.csv')
+df = pd.read_csv('../AV2/alzheimers_disease_data.csv')
 
 # Exclusão de dados inúteis
 df = df.drop('DoctorInCharge', axis=1)
