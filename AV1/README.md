@@ -98,7 +98,7 @@ a melhor forma de realizar a classificação.
 ### Observações para o Relatório
 
 Discutir **organizadamente** na sessão de resultados os números obtidos de cada questão.
-Ao concluir o relatório, compartilhar com **alysonbnr@ufc.br** até 03/11/2023.
+Ao concluir o relatório, compartilhar com **alysonbnr@ufc.br** até 06/08/2024.
 
 ### Apresentação 09/11/2023
 
