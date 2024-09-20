@@ -29,6 +29,7 @@ models = {
     'SVM': SVC()
 }
 
+
 param_grids = {
     'DecisionTree': {'max_depth': [3, 5, 10], 'min_samples_split': [2, 5, 10]},
     'RandomForest': {'n_estimators': [50, 100, 200], 'max_depth': [5, 10, 20]},
@@ -36,6 +37,7 @@ param_grids = {
     'GradientBoosting': {'n_estimators': [50, 100, 200], 'learning_rate': [0.01, 0.1, 1]},
     'SVM': {'C': [0.1, 1, 10], 'kernel': ['linear', 'rbf']}
 }
+
 
 # Função para realizar o GridSearch e retornar a melhor parametrização de cada modelo
 def perform_gridsearch(models, param_grids, X_train, y_train):

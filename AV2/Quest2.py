@@ -71,8 +71,10 @@ def evaluate_all_models(models, param_grids, X_train, y_train, X_test, y_test):
         print("Matriz de Confusão:\n", confusion_matrix(y_test, y_pred))
         print("-" * 50)
 
+
 # Executar o GridSearch e encontrar o melhor modelo
 best_model = Best_Model(X_train, y_train)
+
 
 # Avaliar todos os modelos
 evaluate_all_models(models, param_grids, X_train, y_train, X_test, y_test)
