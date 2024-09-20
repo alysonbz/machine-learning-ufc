@@ -1,0 +1,5 @@
+Decision Tree: {'criterion': 'entropy', 'max_depth': 3, 'min_samples_split': 20}
+Random Forest: {'criterion': 'gini', 'max_depth': 5, 'min_samples_split': 20, 'n_estimators': 100}
+AdaBoost: {'learning_rate': 0.01, 'n_estimators': 100}
+Gradient Boosting: {'learning_rate': 0.01, 'max_depth': 5, 'n_estimators': 50}
+SVM: {'C': 1, 'gamma': 'scale', 'kernel': 'linear'}
