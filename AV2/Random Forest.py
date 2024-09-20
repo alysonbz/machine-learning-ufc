@@ -43,4 +43,31 @@ preprocessor = ColumnTransformer(
 # Dividindo em treino e teste
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
+# Função auxiliar para rodar GridSearchCV e treinar modelos
+from sklearn.metrics import accuracy_score
+from sklearn.model_selection import GridSearchCV
 
+def run_grid_search(pipeline, param_grid):
+    grid_search = GridSearchCV(pipeline, param_grid, cv=5)
+    grid_search.fit(X_train, y_train)
+    print(f"Melhores parâmetros: {grid_search.best_params_}")
+    best_model = grid_search.best_estimator_
+    y_pred = best_model.predict(X_test)
+    print(f"Accuracy no teste: {accuracy_score(y_test, y_pred)}")
+    return best_model
+
+from sklearn.ensemble import RandomForestClassifier
+
+# Random Forest
+print("----- Random Forest -----")
+random_forest = Pipeline(steps=[('preprocessor', preprocessor),
+                                ('classifier', RandomForestClassifier())])
+
+param_grid_rf = {
+    'classifier__n_estimators': [100, 200],
+    'classifier__max_depth': [10, 20, 30, None],
+    'classifier__min_samples_split': [2, 10],
+    'classifier__min_samples_leaf': [1, 5]
+}
+
+best_rf = run_grid_search(random_forest, param_grid_rf)
