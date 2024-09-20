@@ -14,7 +14,7 @@ Utilize o mesmo dataset baixado do kaggle utilizado na AV1.
 
 #### Instruções 
 
-1) Realize o processo de gridsearch para classificação do dataset para  arvore de decisão, random forest, adaboost, gradientBoost, SGB e SVM e retorne a melhor parametrização de cada modelo.
+1) Realize o processo de gridsearch para classificação do dataset para arvore de decisão, random forest, adaboost, gradientBoost, SGB e SVM e retorne a melhor parametrização de cada modelo.
 2) Você realizou um gridsearch da melhor parametrização possível para os modelos da questão 1, utilizando a a função GridSearchCV.
 Em um unico script faça uma implementação que, em vez de um gridseach para parametrização de modelos, seja um gridsearch que retorne o melhor 
 modelo por meio de um método Best_Model que você vai implementar, com base no desempenho de todos os modelos. Utilize a acurácia como
