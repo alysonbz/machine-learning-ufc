@@ -90,9 +90,9 @@ def grid_search_models(X_train, y_train):
 if __name__ == "__main__":
     X_train, X_test, y_train, y_test = prepare_data(data)
     best_model, best_params, best_score = grid_search_models(X_train, y_train)
-    '''print(f"\nMelhor modelo: {best_model}")
+    print(f"\nMelhor modelo: {best_model}")
     print(f"Melhores parâmetros: {best_params}")
-    print(f"Melhor acurácia: {best_score:.4f}")'''
+    print(f"Melhor acurácia: {best_score:.4f}")
 
     # Avaliação no conjunto de teste
     y_pred = best_model.predict(X_test)
