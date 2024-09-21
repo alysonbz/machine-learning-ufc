@@ -6,7 +6,7 @@ from sklearn.metrics import accuracy_score
 # Import DecisionTreeClassifier
 from sklearn.tree import DecisionTreeClassifier
 # Import BaggingClassifier
-from  sklearn.ensemble import BaggingClassifier
+from sklearn.ensemble import BaggingClassifier
 
 # Set seed for reproducibility
 SEED=1

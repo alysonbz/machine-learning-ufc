@@ -1,4 +1,64 @@
 import pandas as pd
+from math import log2
+
+df = pd.read_csv('bv')
+
+# Funções para cálculo da Entropia e Ganho de Informação
+def calculate_entropy(data, target_column):
+    target_values = data[target_column].value_counts(normalize=True)
+    entropy = -sum(p * log2(p) for p in target_values if p > 0)
+    return entropy
+
+def calculate_entropy_attribute(data, attribute, target_column):
+    attribute_values = data[attribute].value_counts(normalize=True)
+    conditional_entropy = 0
+    for value in attribute_values.index:
+        subset = data[data[attribute] == value]
+        subset_entropy = calculate_entropy(subset, target_column)
+        conditional_entropy += attribute_values[value] * subset_entropy
+    return conditional_entropy
+
+def calculate_information_gain(data, attribute, target_column):
+    total_entropy = calculate_entropy(data, target_column)
+    attribute_entropy = calculate_entropy_attribute(data, attribute, target_column)
+    information_gain = total_entropy - attribute_entropy
+    return information_gain
+
+# Funções para cálculo do Índice de Gini e Ganho de Gini
+def calculate_gini_index(data, target_column):
+    target_values = data[target_column].value_counts(normalize=True)
+    gini = 1 - sum(target_values ** 2)
+    return gini
+
+def calculate_gini_attribute(data, attribute, target_column):
+    attribute_values = data[attribute].value_counts(normalize=True)
+    conditional_gini = 0
+    for value in attribute_values.index:
+        subset = data[data[attribute] == value]
+        subset_gini = calculate_gini_index(subset, target_column)
+        conditional_gini += attribute_values[value] * subset_gini
+    return conditional_gini
+
+def calculate_gini_gain(data, attribute, target_column):
+    total_gini = calculate_gini_index(data, target_column)
+    attribute_gini = calculate_gini_attribute(data, attribute, target_column)
+    gini_gain = total_gini - attribute_gini
+    return gini_gain
+
+# Atributos e coluna alvo
+attributes = ["age", "income", "student", "credit_rating"]
+target_column = "Class: buys_computer"
+
+# Cálculo do ganho de informação para cada atributo
+information_gain_results = {attr: calculate_information_gain(df, attr, target_column) for attr in attributes}
+sorted_information_gain = sorted(information_gain_results.items(), key=lambda item: item[1], reverse=True)
+
+# Cálculo do ganho de Gini para cada atributo
+gini_gain_results = {attr: calculate_gini_gain(df, attr, target_column) for attr in attributes}
+sorted_gini_gain = sorted(gini_gain_results.items(), key=lambda item: item[1], reverse=True)
+
+print(sorted_information_gain, sorted_gini_gain)
+import pandas as pd
 import numpy as np
 
 df = pd.read_csv('/home/ufc/savim/machine-learning-ufc/AV1/buys_computer_data.csv')
